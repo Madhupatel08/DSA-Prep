@@ -237,7 +237,7 @@ class lec2{
         // return countFriendsPairings_memo(n, dp);
         System.out.println(printFriendsPairing("ABCDEF", ""));
     }
-77
+
     public static int goldMine_memo(int r, int c, int[][] mat, int[][] dp, int[][] dir) {
         if (c == mat[0].length - 1) {
             return dp[r][c] = mat[r][c];

@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.PriorityQueue;
 import javax.swing.ComponentInputMap;
 public class questions {
+     // ----------------CLASS 1 ------
     public static void swap(int[] arr, int i, int j) {
         int temp = arr[i];
         arr[i] = arr[j];
@@ -36,6 +37,10 @@ public class questions {
                 swap(arr, ++pt, itr);
             itr++;
         }
+    }
+    public static void segregateZeroAndOnes(int[] arr){
+    }
+    public static void segregateZeroOnesAndTwo(int[] arr){
     }
     // https://practice.geeksforgeeks.org/problems/max-sum-in-the-configuration/1
     public static int max_sum(int[] arr, int n) {
@@ -117,6 +122,7 @@ public class questions {
 
         return len;
     }
+     // ----------------CLASS 2 ------
     // 159
     public int lengthOfLongestSubstringTwoDistinct(String s) {
         if (s.length() <= 2)
@@ -285,6 +291,7 @@ public class questions {
 
         return maxVowelCount;
     }
+    //https://practice.geeksforgeeks.org/problems/longest-k-unique-characters-substring0853/1
     // Count all subarrays with atMost k Different Integers.
     public int atMostKDistinct(int[] arr, int k) {
         HashMap<Integer, Integer> freq = new HashMap<>();
@@ -386,7 +393,7 @@ public class questions {
     public int findMaxConsecutiveOnes(int[] nums) {
         int n = nums.length, si = 0, ei = 0, len = 0, count = 0;
         while (ei < n) {
-            if (nums[ei++] == 0)
+            if (nums[ei++] == 0)//pehle arr[ei]=0 check hoga.. then -->ei++..-> then if condition that is si=ei
                 count++;
 
             while (count == 1) {
@@ -417,7 +424,7 @@ public class questions {
         int n = arr.length, si = 0, ei = 0, count = 0, len = 0;
 
         while (ei < n) {
-            if (arr[ei++] == 0)
+            if (arr[ei++] == 0)//pehle arr[ei]=0 check hoga.. then -->ei++..-> then if condition that is si=ei
                 count++;
 
             while (count == 2)
@@ -561,25 +568,34 @@ public class questions {
 
         return len;
     }
-    // 239
+    // ----------------CLASS 5 ------
+    // 239 //nlogn
     public int[] maxSlidingWindow(int[] nums, int k) {
-        PriorityQueue<Integer> pq = new PriorityQueue<>((a, b) -> {
-            return nums[b] - nums[a]; // other - this, reverse of default behaviour.
+        
+        PriorityQueue<Integer>pq = new PriorityQueue<>((a,b) -> {
+            return nums[b] - nums[a];//reverse behaviour of default
+            
         });
-
+        
         int n = nums.length, idx = 0;
-        int[] ans = new int[n - k + 1];
-        for (int i = 0; i < nums.length; i++) {
-            while (pq.size() != 0 && pq.peek() <= i - k)
+        int[] ans = new int[n-k+1];
+        
+        for(int i=0;i<n ; i++){
+            while(pq.size() != 0 && pq.peek() <= i - k)
                 pq.remove();
-
+            
             pq.add(i);
-
-            if (i >= k - 1)
-                ans[idx++] = nums[pq.peek()];
+            
+            if(i >= k-1 ){
+                ans[idx] = nums[pq.peek()];
+                idx++;
+            }
+            
         }
-        return ans;
+        
+        return ans; 
     }
+    //O(N)
     public int[] maxSlidingWindow(int[] nums, int k) {
         LinkedList<Integer> deque = new LinkedList<>();
         int n = nums.length, idx = 0;
@@ -713,6 +729,7 @@ public class questions {
         arraySum = arraySum < 0 ? 0 : arraySum % mod;
         return (int) Math.max(kadansSum, maxPrefixSum + maxSuffixSum + ((k - 2) * arraySum) % mod) % mod;
     }
+     // ----------------CLASS 6 ------
     // https://practice.geeksforgeeks.org/problems/maximum-sum-rectangle2948/1
     public static int kadanesAlgoForNegative(int[] arr) {
         int gSum = -(int) 1e9, cSum = 0;

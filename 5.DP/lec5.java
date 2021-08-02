@@ -121,18 +121,16 @@ class lec5{
             Arrays.fill(d, -1);
         return minDistance(word1, word2, n, m, dp);
     }
-
-    
     // 44
     // -1 -> default, 0 -> false, 1 -> true
     public int isMatch(String s, String p, int n, int m, int[][] dp) {
         if (n == 0 || m == 0) {
             if (n == 0 && m == 0)
-                return dp[n][m] = 1;
+                return dp[n][m] = 1;//true
             else if (m == 1 && p.charAt(m - 1) == '*')
-                return dp[n][m] = 1;
+                return dp[n][m] = 1;//true
             else
-                return dp[n][m] = 0;
+                return dp[n][m] = 0;//false
         }
 
         if (dp[n][m] != -1)
