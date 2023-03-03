@@ -1,3 +1,3 @@
-# levelUp
+# DSA Prep
 
-Data Structures and Algorithms practice Questions
+Data Structures and Algorithms practice Questions and concepts
